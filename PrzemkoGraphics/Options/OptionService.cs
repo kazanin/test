@@ -2,7 +2,7 @@
 
 namespace PrzemkoGraphics.Options
 {
-    public static class OptionService
+    public class OptionService
     {
         private static readonly List<IOption> _options = new List<IOption>();
 
@@ -13,6 +13,12 @@ namespace PrzemkoGraphics.Options
         public static void Add(IOption option)
         {
             _options.Add(option);
+            OnOptionChanged();
+        }
+
+        public static void AddAt(IOption option, int index)
+        {
+            _options.Insert(index, option);
             OnOptionChanged();
         }
 
@@ -39,6 +45,12 @@ namespace PrzemkoGraphics.Options
             }
 
             return image;
+        }
+
+        public IOption this [int num]
+        {
+            get { return _options[num]; }
+            set { _options[num] = value; }
         }
 
     }

@@ -29,17 +29,22 @@ namespace PrzemkoGraphics
         private readonly GrayscaleView _grayscaleView;
         private readonly SepiaView _sepiaView;
         private readonly InvertcolorsView _invertcolorsView;
+        private readonly ResizeView _resizeView;
+        private readonly ResizeRatioView _resizeRatioView;
       
         public Form1()
         {
             InitializeComponent();
+
             _currentView = new CurrentView(pictureBox_current);
             _modifiedView = new ModifiedView(pictureBox_modified);
-            _optionsListView = new OptionsListView(panel_optionslist, optionsList);
+            _optionsListView = new OptionsListView(panel_optionslist, optionsList, button_up, button_down);
             
             _grayscaleView = new GrayscaleView(checkBox_grayscale, panel_grayscale);
             _sepiaView = new SepiaView(checkBox_sepia, panel_sepia);
             _invertcolorsView = new InvertcolorsView(checkBox_invertcolors, panel_invertcolors);
+            _resizeView = new ResizeView(checkBox_resize, panel_resize, textBox_resizeWidth, textBox_resizeHeight, label_resizeError);
+            _resizeRatioView = new ResizeRatioView(checkBox_resizeratio, panel_resizeratio, trackBar_resizeratio, label_resizeratio);
 
             ItemService.CurrentItemChanged += ItemService_CurrentItemChanged;
             ItemService.ItemRemoved += ItemService_ItemRemoved;
@@ -110,7 +115,7 @@ namespace PrzemkoGraphics
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 string directory = folderBrowserDialog1.SelectedPath;
-                directory = directory ?? PgConfig.ChangedFilesPath;
+                directory = directory ?? PgConstants.ChangedFilesPath;
 
                 foreach (var item in ItemService.Items)
                 {
@@ -131,8 +136,11 @@ namespace PrzemkoGraphics
         private void Refresh_modifiedView()
         {
             var image = _currentView.Image;
-            image = OptionService.ApplyOptions(image);
-            _modifiedView.Image = image;
+            if (image != null)
+            {
+                image = OptionService.ApplyOptions(image);
+                _modifiedView.Image = image;
+            }
         }
 
         private void SetFirstItemToViews()
@@ -145,8 +153,19 @@ namespace PrzemkoGraphics
 
         private void button1_Click(object sender, EventArgs e)
         {
-            optionsList.Items.Clear();
-            richTextBox1.Text = ItemService.Items.Count().ToString(CultureInfo.InvariantCulture);
+            textBox1.Text = OptionService.Options.Count().ToString();
+        }
+
+        private void previewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (previewToolStripMenuItem.Checked)
+            {
+                Refresh_modifiedView();
+            }
+            else
+            {
+                _modifiedView.Image = _currentView.Image;
+            }
         }
 
     }

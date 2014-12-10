@@ -48,7 +48,6 @@
             this.checkBox_sepia = new System.Windows.Forms.CheckBox();
             this.panel_grayscale = new System.Windows.Forms.Panel();
             this.checkBox_grayscale = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox_modified = new System.Windows.Forms.PictureBox();
             this.pictureBox_current = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,8 +55,24 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.checkBox_resize = new System.Windows.Forms.CheckBox();
+            this.panel_resize = new System.Windows.Forms.Panel();
+            this.textBox_resizeWidth = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox_resizeHeight = new System.Windows.Forms.TextBox();
+            this.label_resizeError = new System.Windows.Forms.Label();
+            this.checkBox_resizeratio = new System.Windows.Forms.CheckBox();
+            this.panel_resizeratio = new System.Windows.Forms.Panel();
+            this.trackBar_resizeratio = new System.Windows.Forms.TrackBar();
+            this.label_resizeratio = new System.Windows.Forms.Label();
+            this.button_up = new System.Windows.Forms.Button();
+            this.button_down = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl_rightBar.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -71,6 +86,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_current)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.panel_resize.SuspendLayout();
+            this.panel_resizeratio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_resizeratio)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -129,8 +147,9 @@
             this.previewToolStripMenuItem.CheckOnClick = true;
             this.previewToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.previewToolStripMenuItem.Name = "previewToolStripMenuItem";
-            this.previewToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.previewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.previewToolStripMenuItem.Text = "Preview";
+            this.previewToolStripMenuItem.Click += new System.EventHandler(this.previewToolStripMenuItem_Click);
             // 
             // tabControl_rightBar
             // 
@@ -181,6 +200,8 @@
             // 
             // panel_optionslist
             // 
+            this.panel_optionslist.Controls.Add(this.button_down);
+            this.panel_optionslist.Controls.Add(this.button_up);
             this.panel_optionslist.Controls.Add(this.optionsList);
             this.panel_optionslist.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_optionslist.Location = new System.Drawing.Point(3, 513);
@@ -192,6 +213,7 @@
             // 
             this.optionsList.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.optionsList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.optionsList.HideSelection = false;
             this.optionsList.Location = new System.Drawing.Point(0, 0);
             this.optionsList.MultiSelect = false;
             this.optionsList.Name = "optionsList";
@@ -205,6 +227,8 @@
             this.flowLayoutPanel2.Controls.Add(this.panel_invertcolors);
             this.flowLayoutPanel2.Controls.Add(this.panel_sepia);
             this.flowLayoutPanel2.Controls.Add(this.panel_grayscale);
+            this.flowLayoutPanel2.Controls.Add(this.panel_resize);
+            this.flowLayoutPanel2.Controls.Add(this.panel_resizeratio);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -267,16 +291,6 @@
             this.checkBox_grayscale.TabIndex = 0;
             this.checkBox_grayscale.Text = "Grayscale";
             this.checkBox_grayscale.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(697, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox_modified
             // 
@@ -343,13 +357,167 @@
             this.openFileDialog1.Multiselect = true;
             this.openFileDialog1.RestoreDirectory = true;
             // 
-            // richTextBox1
+            // checkBox_resize
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(834, 12);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(172, 206);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.checkBox_resize.AutoSize = true;
+            this.checkBox_resize.Location = new System.Drawing.Point(12, 3);
+            this.checkBox_resize.Name = "checkBox_resize";
+            this.checkBox_resize.Size = new System.Drawing.Size(58, 17);
+            this.checkBox_resize.TabIndex = 0;
+            this.checkBox_resize.Text = "Resize";
+            this.checkBox_resize.UseVisualStyleBackColor = true;
+            // 
+            // panel_resize
+            // 
+            this.panel_resize.Controls.Add(this.label_resizeError);
+            this.panel_resize.Controls.Add(this.label3);
+            this.panel_resize.Controls.Add(this.label4);
+            this.panel_resize.Controls.Add(this.textBox_resizeHeight);
+            this.panel_resize.Controls.Add(this.label2);
+            this.panel_resize.Controls.Add(this.label1);
+            this.panel_resize.Controls.Add(this.textBox_resizeWidth);
+            this.panel_resize.Controls.Add(this.checkBox_resize);
+            this.panel_resize.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_resize.Location = new System.Drawing.Point(3, 108);
+            this.panel_resize.Name = "panel_resize";
+            this.panel_resize.Size = new System.Drawing.Size(238, 74);
+            this.panel_resize.TabIndex = 4;
+            // 
+            // textBox_resizeWidth
+            // 
+            this.textBox_resizeWidth.Location = new System.Drawing.Point(71, 22);
+            this.textBox_resizeWidth.Name = "textBox_resizeWidth";
+            this.textBox_resizeWidth.Size = new System.Drawing.Size(69, 20);
+            this.textBox_resizeWidth.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Width";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(146, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(18, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "px";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(146, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "px";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Height";
+            // 
+            // textBox_resizeHeight
+            // 
+            this.textBox_resizeHeight.Location = new System.Drawing.Point(71, 41);
+            this.textBox_resizeHeight.Name = "textBox_resizeHeight";
+            this.textBox_resizeHeight.Size = new System.Drawing.Size(69, 20);
+            this.textBox_resizeHeight.TabIndex = 4;
+            // 
+            // label_resizeError
+            // 
+            this.label_resizeError.AutoSize = true;
+            this.label_resizeError.ForeColor = System.Drawing.Color.Red;
+            this.label_resizeError.Location = new System.Drawing.Point(68, 4);
+            this.label_resizeError.Name = "label_resizeError";
+            this.label_resizeError.Size = new System.Drawing.Size(90, 13);
+            this.label_resizeError.TabIndex = 7;
+            this.label_resizeError.Text = "Invalid image size";
+            this.label_resizeError.Visible = false;
+            // 
+            // checkBox_resizeratio
+            // 
+            this.checkBox_resizeratio.AutoSize = true;
+            this.checkBox_resizeratio.Location = new System.Drawing.Point(12, 3);
+            this.checkBox_resizeratio.Name = "checkBox_resizeratio";
+            this.checkBox_resizeratio.Size = new System.Drawing.Size(103, 17);
+            this.checkBox_resizeratio.TabIndex = 0;
+            this.checkBox_resizeratio.Text = "Resize with ratio";
+            this.checkBox_resizeratio.UseVisualStyleBackColor = true;
+            // 
+            // panel_resizeratio
+            // 
+            this.panel_resizeratio.Controls.Add(this.label_resizeratio);
+            this.panel_resizeratio.Controls.Add(this.trackBar_resizeratio);
+            this.panel_resizeratio.Controls.Add(this.checkBox_resizeratio);
+            this.panel_resizeratio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_resizeratio.Location = new System.Drawing.Point(3, 188);
+            this.panel_resizeratio.Name = "panel_resizeratio";
+            this.panel_resizeratio.Size = new System.Drawing.Size(238, 70);
+            this.panel_resizeratio.TabIndex = 5;
+            // 
+            // trackBar_resizeratio
+            // 
+            this.trackBar_resizeratio.Location = new System.Drawing.Point(60, 22);
+            this.trackBar_resizeratio.Maximum = 100;
+            this.trackBar_resizeratio.Minimum = 1;
+            this.trackBar_resizeratio.Name = "trackBar_resizeratio";
+            this.trackBar_resizeratio.Size = new System.Drawing.Size(104, 45);
+            this.trackBar_resizeratio.TabIndex = 1;
+            this.trackBar_resizeratio.Value = 100;
+            // 
+            // label_resizeratio
+            // 
+            this.label_resizeratio.AutoSize = true;
+            this.label_resizeratio.Location = new System.Drawing.Point(182, 36);
+            this.label_resizeratio.Name = "label_resizeratio";
+            this.label_resizeratio.Size = new System.Drawing.Size(25, 13);
+            this.label_resizeratio.TabIndex = 2;
+            this.label_resizeratio.Text = "100";
+            // 
+            // button_up
+            // 
+            this.button_up.Location = new System.Drawing.Point(196, 3);
+            this.button_up.Name = "button_up";
+            this.button_up.Size = new System.Drawing.Size(39, 72);
+            this.button_up.TabIndex = 2;
+            this.button_up.Text = "UP";
+            this.button_up.UseVisualStyleBackColor = true;
+            // 
+            // button_down
+            // 
+            this.button_down.Location = new System.Drawing.Point(196, 81);
+            this.button_down.Name = "button_down";
+            this.button_down.Size = new System.Drawing.Size(39, 78);
+            this.button_down.TabIndex = 3;
+            this.button_down.Text = "DOWN";
+            this.button_down.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(732, 1);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(616, -5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -357,14 +525,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 730);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tabControl_rightBar);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "PrzemkoGraphics";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -384,6 +552,11 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panel_resize.ResumeLayout(false);
+            this.panel_resize.PerformLayout();
+            this.panel_resizeratio.ResumeLayout(false);
+            this.panel_resizeratio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_resizeratio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,9 +579,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel_grayscale;
         private System.Windows.Forms.CheckBox checkBox_grayscale;
         private System.Windows.Forms.ListView optionsList;
@@ -421,6 +592,23 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel panel_optionslist;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Panel panel_resize;
+        private System.Windows.Forms.TextBox textBox_resizeWidth;
+        private System.Windows.Forms.CheckBox checkBox_resize;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox_resizeHeight;
+        private System.Windows.Forms.Label label_resizeError;
+        private System.Windows.Forms.Panel panel_resizeratio;
+        private System.Windows.Forms.Label label_resizeratio;
+        private System.Windows.Forms.TrackBar trackBar_resizeratio;
+        private System.Windows.Forms.CheckBox checkBox_resizeratio;
+        private System.Windows.Forms.Button button_down;
+        private System.Windows.Forms.Button button_up;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -69,9 +69,13 @@
     <Compile Include="Options\Filters\Grayscale.cs" />
     <Compile Include="Options\Filters\Invertcolors.cs" />
     <Compile Include="Options\Filters\Sepia.cs" />
+    <Compile Include="Options\Modifiers\Resize.cs" />
+    <Compile Include="Options\Modifiers\ResizeRatio.cs" />
     <Compile Include="Options\OptionService.cs" />
     <Compile Include="Options\OptionsListView.cs" />
     <Compile Include="Options\Views\InvertcolorsView.cs" />
+    <Compile Include="Options\Views\ResizeRatioView.cs" />
+    <Compile Include="Options\Views\ResizeView.cs" />
     <Compile Include="Options\Views\SepiaView.cs" />
     <Compile Include="Options\Views\GrayscaleView.cs" />
     <Compile Include="Options\IOption.cs" />
@@ -79,7 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\FilenameGenerator.cs" />
     <Compile Include="Utils\IPicture.cs" />
-    <Compile Include="Utils\PgConfig.cs" />
+    <Compile Include="Utils\PgConstants.cs" />
     <Compile Include="Utils\Picture.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

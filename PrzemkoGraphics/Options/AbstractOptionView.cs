@@ -22,7 +22,7 @@ namespace PrzemkoGraphics.Options
             _checkBox.CheckedChanged += _checkBox_CheckedChanged;
         }
 
-        public void _checkBox_CheckedChanged(object sender, EventArgs e)
+        public virtual void _checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (_checkBox.Checked)
             {
