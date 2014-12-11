@@ -8,24 +8,29 @@ using System.Threading.Tasks;
 
 namespace PrzemkoGraphics.Gallery
 {
-    public static class ItemService
+    public class ItemService
     {
-        public static readonly List<Item> Items = new List<Item>();
-        private static Item _current;
-   //     public static IEnumerable<Item> Items { get { return _items; } }
+        public static readonly List<Item> _items = new List<Item>();
+        public static IEnumerable<Item> Items { get { return _items; } }
 
+        private static Item _current;
+        
         public delegate void ItemChange();
         public static event ItemChange CurrentItemChanged;
         public static event ItemChange ItemRemoved;
 
+        public static int Count
+        {
+            get { return _items.Count(); }
+        }
         public static void Add(Item item)
         {
-            Items.Add(item);
+            _items.Add(item);
         }
 
         public static void Remove(Item item)
         {
-            Items.Remove(item);
+            _items.Remove(item);
             OnItemRemoved();
         }
 
@@ -33,30 +38,47 @@ namespace PrzemkoGraphics.Gallery
         {
             for (int i = 0; i < Items.Count(); i++)
             {
-                Items[i].Dispose();
+                _items[i].Dispose();
             }
-            Items.Clear();
+            
+            _items.Clear();
             OnItemRemoved();
         }
 
-        public static void SetCurrent(Item item)
+
+        public static Item Current
         {
-            _current = item;
-            _current._pictureBox.BackColor = Color.Aqua;
-            foreach (var item2 in ItemService.Items)
+            get
             {
-                if (item2 != _current)
-                    item2._pictureBox.BackColor = Color.Black;
+                if (_current == null)
+                    throw new Exception("No image selected");
+
+                return _current;
             }
-            OnCurrentChanged();
+            set
+            {
+                _current = value;
+                _current._pictureBox.BackColor = Color.Aqua;
+
+                foreach (var item in ItemService.Items)
+                {
+                    if (item != _current)
+                        item._pictureBox.BackColor = Color.Black;
+                }
+
+                OnCurrentChanged();
+            }
         }
 
-        public static Item GetCurrent()
+        public static Item GetFirst
         {
-            if (_current == null)
-                throw new Exception("Nie ma zaznaczonego obrazka");
+            get
+            {
+                if (_items.Count == 0)
+                    throw new Exception("No image to fetch");
 
-            return _current;
+                return _items[0];
+            }
         }
 
         public static void OnCurrentChanged()
@@ -74,6 +96,6 @@ namespace PrzemkoGraphics.Gallery
                 ItemRemoved();
             }
         }
-        
+
     }
 }

@@ -40,8 +40,7 @@ namespace PrzemkoGraphics.Options
 
             if (index != 0)
             {
-                var opt = new OptionService();
-                var option = opt[index];
+                var option = OptionService.GetAt(index);
                 OptionService.Remove(option);
                 OptionService.AddAt(option, index - 1);
                 _optionsList.Items[index - 1].Selected = true;
@@ -58,8 +57,7 @@ namespace PrzemkoGraphics.Options
 
             if (index != _optionsList.Items.Count - 1)
             {
-                var opt = new OptionService();
-                var option = opt[index];
+                var option = OptionService.GetAt(index);
                 OptionService.Remove(option);
                 OptionService.AddAt(option, index + 1);
                 _optionsList.Items[index + 1].Selected = true;

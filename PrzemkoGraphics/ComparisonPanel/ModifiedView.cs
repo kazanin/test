@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AForge.Imaging;
 using PrzemkoGraphics.Gallery;
-using Image = System.Drawing.Image;
 
 namespace PrzemkoGraphics.ComparisonPanel
 {

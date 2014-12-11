@@ -58,7 +58,7 @@ namespace PrzemkoGraphics
 
         public void ItemService_CurrentItemChanged()
         {
-            var current = ItemService.GetCurrent();
+            var current = ItemService.Current;
             _currentView.Image = current.Image;
             _modifiedView.Image = current.Image;
 
@@ -126,11 +126,11 @@ namespace PrzemkoGraphics
                 {
                     var imageMod = OptionService.ApplyOptions(item.Image);
                     var fullPath = Path.Combine(directory, item.Picture.Name);
-
+                   
                     FilenameGenerator.Generate(ref fullPath);
                     imageMod.Save(fullPath, ImageFormat.Jpeg);
                 }
-                _statusStrip.Text = String.Format("{0} Files Saved", ItemService.Items.Count);
+                _statusStrip.Text = String.Format("{0} Files Saved", ItemService.Count);
             }
         }
 
@@ -151,10 +151,10 @@ namespace PrzemkoGraphics
 
         private void SetFirstItemToViews()
         {
-            var firstItem = ItemService.Items[0];
+            var firstItem = ItemService.GetFirst;
             _currentView.Image = firstItem.Image;
             _modifiedView.Image = firstItem.Image;
-            ItemService.SetCurrent(firstItem);
+            ItemService.Current = firstItem;
         }
 
         private void button1_Click(object sender, EventArgs e)

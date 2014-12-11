@@ -50,7 +50,7 @@ namespace PrzemkoGraphics.Gallery
 
         public void _pictureBox_Click(object sender, EventArgs e)
         {
-            ItemService.SetCurrent(this);
+            ItemService.Current = this;
         }
 
         public void _button_exit_Click(object sender, EventArgs e)

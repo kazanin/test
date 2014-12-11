@@ -10,6 +10,8 @@ namespace PrzemkoGraphics.Options.Modifiers
 {
     public class Resize : IOption
     {
+        private const int ValidMinSize = 1;
+        private const int ValidMaxSize = 3000;
         public int Width { get; set; }
         public int Height { get; set; }
 
@@ -45,7 +47,8 @@ namespace PrzemkoGraphics.Options.Modifiers
                 var width = Width;
                 var height = Height;
 
-                if (width > 0 && width < 3000 && height > 0 && height < 3000)
+                if (Enumerable.Range(ValidMinSize, ValidMaxSize).Contains(width)
+                    && Enumerable.Range(ValidMinSize, ValidMaxSize).Contains(height))
                 {
                     return true;
                 }

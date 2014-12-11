@@ -36,6 +36,11 @@ namespace PrzemkoGraphics.Options
             OnOptionChanged();
         }
 
+        public static IOption GetAt(int index)
+        {
+            return _options[index];
+        }
+
         public static void OnOptionChanged()
         {
             if (OptionChanged != null)
@@ -54,11 +59,7 @@ namespace PrzemkoGraphics.Options
             return image;
         }
 
-        public IOption this[int num]
-        {
-            get { return _options[num]; }
-            set { _options[num] = value; }
-        }
+
 
     }
 }
