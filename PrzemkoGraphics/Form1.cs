@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using AForge.Imaging.Filters;
 using PrzemkoGraphics.ComparisonPanel;
 using PrzemkoGraphics.Gallery;
+using PrzemkoGraphics.GUI;
 using PrzemkoGraphics.Options;
 using PrzemkoGraphics.Options.Views;
 using PrzemkoGraphics.Utils;
@@ -25,6 +26,8 @@ namespace PrzemkoGraphics
         private readonly CurrentView _currentView;
         private readonly ModifiedView _modifiedView;
         private readonly OptionsListView _optionsListView;
+
+        private readonly Strip _statusStrip;
 
         private readonly GrayscaleView _grayscaleView;
         private readonly SepiaView _sepiaView;
@@ -39,7 +42,9 @@ namespace PrzemkoGraphics
             _currentView = new CurrentView(pictureBox_current);
             _modifiedView = new ModifiedView(pictureBox_modified);
             _optionsListView = new OptionsListView(panel_optionslist, optionsList, button_up, button_down);
-            
+
+            _statusStrip = new Strip(statusStrip1, toolStripStatusLabel1, toolStripProgressBar1);
+
             _grayscaleView = new GrayscaleView(checkBox_grayscale, panel_grayscale);
             _sepiaView = new SepiaView(checkBox_sepia, panel_sepia);
             _invertcolorsView = new InvertcolorsView(checkBox_invertcolors, panel_invertcolors);
@@ -125,6 +130,7 @@ namespace PrzemkoGraphics
                     FilenameGenerator.Generate(ref fullPath);
                     imageMod.Save(fullPath, ImageFormat.Jpeg);
                 }
+                _statusStrip.Text = String.Format("{0} Files Saved", ItemService.Items.Count);
             }
         }
 
@@ -166,6 +172,12 @@ namespace PrzemkoGraphics
             {
                 _modifiedView.Image = _currentView.Image;
             }
+        }
+
+        private void clearGalleryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ItemService.RemoveAll();
+
         }
 
     }

@@ -40,6 +40,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel_optionslist = new System.Windows.Forms.Panel();
+            this.button_down = new System.Windows.Forms.Button();
+            this.button_up = new System.Windows.Forms.Button();
             this.optionsList = new System.Windows.Forms.ListView();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel_invertcolors = new System.Windows.Forms.Panel();
@@ -48,31 +50,30 @@
             this.checkBox_sepia = new System.Windows.Forms.CheckBox();
             this.panel_grayscale = new System.Windows.Forms.Panel();
             this.checkBox_grayscale = new System.Windows.Forms.CheckBox();
-            this.pictureBox_modified = new System.Windows.Forms.PictureBox();
-            this.pictureBox_current = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.checkBox_resize = new System.Windows.Forms.CheckBox();
             this.panel_resize = new System.Windows.Forms.Panel();
-            this.textBox_resizeWidth = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_resizeError = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_resizeHeight = new System.Windows.Forms.TextBox();
-            this.label_resizeError = new System.Windows.Forms.Label();
-            this.checkBox_resizeratio = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_resizeWidth = new System.Windows.Forms.TextBox();
+            this.checkBox_resize = new System.Windows.Forms.CheckBox();
             this.panel_resizeratio = new System.Windows.Forms.Panel();
-            this.trackBar_resizeratio = new System.Windows.Forms.TrackBar();
             this.label_resizeratio = new System.Windows.Forms.Label();
-            this.button_up = new System.Windows.Forms.Button();
-            this.button_down = new System.Windows.Forms.Button();
+            this.trackBar_resizeratio = new System.Windows.Forms.TrackBar();
+            this.checkBox_resizeratio = new System.Windows.Forms.CheckBox();
+            this.pictureBox_modified = new System.Windows.Forms.PictureBox();
+            this.pictureBox_current = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.clearGalleryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl_rightBar.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -82,13 +83,13 @@
             this.panel_invertcolors.SuspendLayout();
             this.panel_sepia.SuspendLayout();
             this.panel_grayscale.SuspendLayout();
+            this.panel_resize.SuspendLayout();
+            this.panel_resizeratio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_resizeratio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_modified)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_current)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.panel_resize.SuspendLayout();
-            this.panel_resizeratio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar_resizeratio)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -136,7 +137,8 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.previewToolStripMenuItem});
+            this.previewToolStripMenuItem,
+            this.clearGalleryToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -208,6 +210,24 @@
             this.panel_optionslist.Name = "panel_optionslist";
             this.panel_optionslist.Size = new System.Drawing.Size(238, 164);
             this.panel_optionslist.TabIndex = 5;
+            // 
+            // button_down
+            // 
+            this.button_down.Location = new System.Drawing.Point(196, 81);
+            this.button_down.Name = "button_down";
+            this.button_down.Size = new System.Drawing.Size(39, 78);
+            this.button_down.TabIndex = 3;
+            this.button_down.Text = "DOWN";
+            this.button_down.UseVisualStyleBackColor = true;
+            // 
+            // button_up
+            // 
+            this.button_up.Location = new System.Drawing.Point(196, 3);
+            this.button_up.Name = "button_up";
+            this.button_up.Size = new System.Drawing.Size(39, 72);
+            this.button_up.TabIndex = 2;
+            this.button_up.Text = "UP";
+            this.button_up.UseVisualStyleBackColor = true;
             // 
             // optionsList
             // 
@@ -292,81 +312,6 @@
             this.checkBox_grayscale.Text = "Grayscale";
             this.checkBox_grayscale.UseVisualStyleBackColor = true;
             // 
-            // pictureBox_modified
-            // 
-            this.pictureBox_modified.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox_modified.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_modified.Location = new System.Drawing.Point(508, 3);
-            this.pictureBox_modified.Name = "pictureBox_modified";
-            this.pictureBox_modified.Size = new System.Drawing.Size(501, 700);
-            this.pictureBox_modified.TabIndex = 2;
-            this.pictureBox_modified.TabStop = false;
-            // 
-            // pictureBox_current
-            // 
-            this.pictureBox_current.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox_current.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_current.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox_current.Name = "pictureBox_current";
-            this.pictureBox_current.Size = new System.Drawing.Size(499, 700);
-            this.pictureBox_current.TabIndex = 3;
-            this.pictureBox_current.TabStop = false;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.92826F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.07174F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox_current, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox_modified, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 706F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1012, 706);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 708);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1012, 22);
-            this.statusStrip1.TabIndex = 6;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Multiselect = true;
-            this.openFileDialog1.RestoreDirectory = true;
-            // 
-            // checkBox_resize
-            // 
-            this.checkBox_resize.AutoSize = true;
-            this.checkBox_resize.Location = new System.Drawing.Point(12, 3);
-            this.checkBox_resize.Name = "checkBox_resize";
-            this.checkBox_resize.Size = new System.Drawing.Size(58, 17);
-            this.checkBox_resize.TabIndex = 0;
-            this.checkBox_resize.Text = "Resize";
-            this.checkBox_resize.UseVisualStyleBackColor = true;
-            // 
             // panel_resize
             // 
             this.panel_resize.Controls.Add(this.label_resizeError);
@@ -383,30 +328,16 @@
             this.panel_resize.Size = new System.Drawing.Size(238, 74);
             this.panel_resize.TabIndex = 4;
             // 
-            // textBox_resizeWidth
+            // label_resizeError
             // 
-            this.textBox_resizeWidth.Location = new System.Drawing.Point(71, 22);
-            this.textBox_resizeWidth.Name = "textBox_resizeWidth";
-            this.textBox_resizeWidth.Size = new System.Drawing.Size(69, 20);
-            this.textBox_resizeWidth.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Width";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(146, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "px";
+            this.label_resizeError.AutoSize = true;
+            this.label_resizeError.ForeColor = System.Drawing.Color.Red;
+            this.label_resizeError.Location = new System.Drawing.Point(68, 4);
+            this.label_resizeError.Name = "label_resizeError";
+            this.label_resizeError.Size = new System.Drawing.Size(90, 13);
+            this.label_resizeError.TabIndex = 7;
+            this.label_resizeError.Text = "Invalid image size";
+            this.label_resizeError.Visible = false;
             // 
             // label3
             // 
@@ -433,26 +364,40 @@
             this.textBox_resizeHeight.Size = new System.Drawing.Size(69, 20);
             this.textBox_resizeHeight.TabIndex = 4;
             // 
-            // label_resizeError
+            // label2
             // 
-            this.label_resizeError.AutoSize = true;
-            this.label_resizeError.ForeColor = System.Drawing.Color.Red;
-            this.label_resizeError.Location = new System.Drawing.Point(68, 4);
-            this.label_resizeError.Name = "label_resizeError";
-            this.label_resizeError.Size = new System.Drawing.Size(90, 13);
-            this.label_resizeError.TabIndex = 7;
-            this.label_resizeError.Text = "Invalid image size";
-            this.label_resizeError.Visible = false;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(146, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(18, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "px";
             // 
-            // checkBox_resizeratio
+            // label1
             // 
-            this.checkBox_resizeratio.AutoSize = true;
-            this.checkBox_resizeratio.Location = new System.Drawing.Point(12, 3);
-            this.checkBox_resizeratio.Name = "checkBox_resizeratio";
-            this.checkBox_resizeratio.Size = new System.Drawing.Size(103, 17);
-            this.checkBox_resizeratio.TabIndex = 0;
-            this.checkBox_resizeratio.Text = "Resize with ratio";
-            this.checkBox_resizeratio.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Width";
+            // 
+            // textBox_resizeWidth
+            // 
+            this.textBox_resizeWidth.Location = new System.Drawing.Point(71, 22);
+            this.textBox_resizeWidth.Name = "textBox_resizeWidth";
+            this.textBox_resizeWidth.Size = new System.Drawing.Size(69, 20);
+            this.textBox_resizeWidth.TabIndex = 1;
+            // 
+            // checkBox_resize
+            // 
+            this.checkBox_resize.AutoSize = true;
+            this.checkBox_resize.Location = new System.Drawing.Point(12, 3);
+            this.checkBox_resize.Name = "checkBox_resize";
+            this.checkBox_resize.Size = new System.Drawing.Size(58, 17);
+            this.checkBox_resize.TabIndex = 0;
+            this.checkBox_resize.Text = "Resize";
+            this.checkBox_resize.UseVisualStyleBackColor = true;
             // 
             // panel_resizeratio
             // 
@@ -465,6 +410,15 @@
             this.panel_resizeratio.Size = new System.Drawing.Size(238, 70);
             this.panel_resizeratio.TabIndex = 5;
             // 
+            // label_resizeratio
+            // 
+            this.label_resizeratio.AutoSize = true;
+            this.label_resizeratio.Location = new System.Drawing.Point(182, 36);
+            this.label_resizeratio.Name = "label_resizeratio";
+            this.label_resizeratio.Size = new System.Drawing.Size(25, 13);
+            this.label_resizeratio.TabIndex = 2;
+            this.label_resizeratio.Text = "100";
+            // 
             // trackBar_resizeratio
             // 
             this.trackBar_resizeratio.Location = new System.Drawing.Point(60, 22);
@@ -475,32 +429,58 @@
             this.trackBar_resizeratio.TabIndex = 1;
             this.trackBar_resizeratio.Value = 100;
             // 
-            // label_resizeratio
+            // checkBox_resizeratio
             // 
-            this.label_resizeratio.AutoSize = true;
-            this.label_resizeratio.Location = new System.Drawing.Point(182, 36);
-            this.label_resizeratio.Name = "label_resizeratio";
-            this.label_resizeratio.Size = new System.Drawing.Size(25, 13);
-            this.label_resizeratio.TabIndex = 2;
-            this.label_resizeratio.Text = "100";
+            this.checkBox_resizeratio.AutoSize = true;
+            this.checkBox_resizeratio.Location = new System.Drawing.Point(12, 3);
+            this.checkBox_resizeratio.Name = "checkBox_resizeratio";
+            this.checkBox_resizeratio.Size = new System.Drawing.Size(103, 17);
+            this.checkBox_resizeratio.TabIndex = 0;
+            this.checkBox_resizeratio.Text = "Resize with ratio";
+            this.checkBox_resizeratio.UseVisualStyleBackColor = true;
             // 
-            // button_up
+            // pictureBox_modified
             // 
-            this.button_up.Location = new System.Drawing.Point(196, 3);
-            this.button_up.Name = "button_up";
-            this.button_up.Size = new System.Drawing.Size(39, 72);
-            this.button_up.TabIndex = 2;
-            this.button_up.Text = "UP";
-            this.button_up.UseVisualStyleBackColor = true;
+            this.pictureBox_modified.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pictureBox_modified.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_modified.Location = new System.Drawing.Point(508, 3);
+            this.pictureBox_modified.Name = "pictureBox_modified";
+            this.pictureBox_modified.Size = new System.Drawing.Size(501, 700);
+            this.pictureBox_modified.TabIndex = 2;
+            this.pictureBox_modified.TabStop = false;
             // 
-            // button_down
+            // pictureBox_current
             // 
-            this.button_down.Location = new System.Drawing.Point(196, 81);
-            this.button_down.Name = "button_down";
-            this.button_down.Size = new System.Drawing.Size(39, 78);
-            this.button_down.TabIndex = 3;
-            this.button_down.Text = "DOWN";
-            this.button_down.UseVisualStyleBackColor = true;
+            this.pictureBox_current.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pictureBox_current.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_current.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox_current.Name = "pictureBox_current";
+            this.pictureBox_current.Size = new System.Drawing.Size(499, 700);
+            this.pictureBox_current.TabIndex = 3;
+            this.pictureBox_current.TabStop = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.92826F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.07174F));
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox_current, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox_modified, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 706F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1012, 706);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Multiselect = true;
+            this.openFileDialog1.RestoreDirectory = true;
             // 
             // textBox1
             // 
@@ -518,6 +498,37 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 15);
+            this.toolStripStatusLabel1.Text = "Ready";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripProgressBar1});
+            this.statusStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.statusStrip1.Location = new System.Drawing.Point(0, 708);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1012, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // clearGalleryToolStripMenuItem
+            // 
+            this.clearGalleryToolStripMenuItem.Name = "clearGalleryToolStripMenuItem";
+            this.clearGalleryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearGalleryToolStripMenuItem.Text = "Clear Gallery";
+            this.clearGalleryToolStripMenuItem.Click += new System.EventHandler(this.clearGalleryToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -547,16 +558,16 @@
             this.panel_sepia.PerformLayout();
             this.panel_grayscale.ResumeLayout(false);
             this.panel_grayscale.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_modified)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_current)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.panel_resize.ResumeLayout(false);
             this.panel_resize.PerformLayout();
             this.panel_resizeratio.ResumeLayout(false);
             this.panel_resizeratio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_resizeratio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_modified)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_current)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -575,9 +586,6 @@
         private System.Windows.Forms.PictureBox pictureBox_modified;
         private System.Windows.Forms.PictureBox pictureBox_current;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel_grayscale;
@@ -609,6 +617,10 @@
         private System.Windows.Forms.Button button_up;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem clearGalleryToolStripMenuItem;
     }
 }
 

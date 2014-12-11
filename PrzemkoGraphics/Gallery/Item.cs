@@ -59,8 +59,6 @@ namespace PrzemkoGraphics.Gallery
             Dispose();
         }
 
-
-
         public void Dispose()
         {
             _button_exit.Dispose();

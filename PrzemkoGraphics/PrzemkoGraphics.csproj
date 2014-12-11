@@ -65,6 +65,7 @@
     <Compile Include="Gallery\Item.cs" />
     <Compile Include="Gallery\ItemBuilder.cs" />
     <Compile Include="Gallery\ItemService.cs" />
+    <Compile Include="GUI\Strip.cs" />
     <Compile Include="Options\AbstractOptionView.cs" />
     <Compile Include="Options\Filters\Grayscale.cs" />
     <Compile Include="Options\Filters\Invertcolors.cs" />

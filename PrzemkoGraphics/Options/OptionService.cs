@@ -22,6 +22,13 @@ namespace PrzemkoGraphics.Options
             OnOptionChanged();
         }
 
+        public static void Update(IOption option)
+        {
+            var index = _options.FindIndex(o => o.Name == option.Name);
+            _options[index] = option;
+            OnOptionChanged();
+        }
+
         public static void Remove(IOption option)
         {
             option = _options.Find(m => m.Name == option.Name);
@@ -47,7 +54,7 @@ namespace PrzemkoGraphics.Options
             return image;
         }
 
-        public IOption this [int num]
+        public IOption this[int num]
         {
             get { return _options[num]; }
             set { _options[num] = value; }

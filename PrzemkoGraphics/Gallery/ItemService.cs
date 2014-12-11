@@ -29,6 +29,16 @@ namespace PrzemkoGraphics.Gallery
             OnItemRemoved();
         }
 
+        public static void RemoveAll()
+        {
+            for (int i = 0; i < Items.Count(); i++)
+            {
+                Items[i].Dispose();
+            }
+            Items.Clear();
+            OnItemRemoved();
+        }
+
         public static void SetCurrent(Item item)
         {
             _current = item;
