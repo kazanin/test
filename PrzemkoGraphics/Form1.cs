@@ -157,11 +157,6 @@ namespace PrzemkoGraphics
             ItemService.Current = firstItem;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = OptionService.Options.Count().ToString();
-        }
-
         private void previewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (previewToolStripMenuItem.Checked)

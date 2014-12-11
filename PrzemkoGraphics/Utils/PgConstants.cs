@@ -9,8 +9,11 @@ namespace PrzemkoGraphics.Utils
 {
     public static class PgConstants
     {
-        public static readonly string ChangedFilesPath = @"C:\Users\Intuo\Desktop\babymetal\changed\";
+        public static readonly string ChangedFilesPath = @"C:\Users\Intuo\Desktop\changed\";
 
-        public static Regex RegexNumbers = new Regex(@"^[0-9]+$");
+        public static readonly Regex RegexNumbers = new Regex(@"^[0-9]+$");
+
+        public static readonly int ValidMinSize = 1;
+        public static readonly int ValidMaxSize = 3000;
     }
 }

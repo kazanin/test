@@ -83,7 +83,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\FilenameGenerator.cs" />
-    <Compile Include="Utils\IPicture.cs" />
     <Compile Include="Utils\PgConstants.cs" />
     <Compile Include="Utils\Picture.cs" />
     <EmbeddedResource Include="Form1.resx">

@@ -30,6 +30,7 @@ namespace PrzemkoGraphics.Options.Views
             var value = _trackBar.Value;
             _label.Text = value.ToString();
             _resizeRatio.Ratio = value;
+
             if (_checkBox.Checked)
             {
                 OptionService.Update(_resizeRatio);

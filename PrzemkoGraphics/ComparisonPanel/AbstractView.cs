@@ -13,7 +13,7 @@ namespace PrzemkoGraphics.ComparisonPanel
     {
         protected PictureBox _pictureBox;
 
-        public AbstractView(PictureBox pictureBox)
+        protected AbstractView(PictureBox pictureBox)
         {
             _pictureBox = pictureBox;
             _pictureBox.SizeMode = PictureBoxSizeMode.Zoom;

@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AForge.Imaging.Filters;
+using PrzemkoGraphics.Utils;
 
 namespace PrzemkoGraphics.Options.Modifiers
 {
     public class Resize : IOption
     {
-        private const int ValidMinSize = 1;
-        private const int ValidMaxSize = 3000;
         public int Width { get; set; }
         public int Height { get; set; }
 
@@ -46,9 +45,9 @@ namespace PrzemkoGraphics.Options.Modifiers
             {
                 var width = Width;
                 var height = Height;
-
-                if (Enumerable.Range(ValidMinSize, ValidMaxSize).Contains(width)
-                    && Enumerable.Range(ValidMinSize, ValidMaxSize).Contains(height))
+                var range = Enumerable.Range(PgConstants.ValidMinSize, PgConstants.ValidMaxSize);
+            
+                if (range.Contains(width) && range.Contains(height))
                 {
                     return true;
                 }
